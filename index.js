@@ -2,7 +2,7 @@
 
 let path;
 if (process.platform === "linux") path = "/dev/stdin";
-if (process.platform === "win32") path = "./input.txt";
+else if (process.platform === "win32") path = "./input.txt";
 
 // https://www.acmicpc.net/problem/1000
 (() => {
@@ -84,9 +84,6 @@ if (process.platform === "win32") path = "./input.txt";
   }
   console.log(0);
 })();
-
-// https://www.acmicpc.net/problem/2588
-(() => {})();
 
 // https://www.acmicpc.net/problem/11382
 (() => {
@@ -182,9 +179,6 @@ if (process.platform === "win32") path = "./input.txt";
     return;
   }
 })();
-
-// https://www.acmicpc.net/problem/2525
-(() => {})();
 
 // https://www.acmicpc.net/problem/2480
 (() => {
@@ -333,12 +327,6 @@ if (process.platform === "win32") path = "./input.txt";
   }
   console.log(answer);
 })();
-
-// https://www.acmicpc.net/problem/2438
-(() => {})();
-
-// https://www.acmicpc.net/problem/2439
-(() => {})();
 
 // https://www.acmicpc.net/problem/10952
 (() => {
@@ -497,12 +485,102 @@ if (process.platform === "win32") path = "./input.txt";
   console.log(arrs.length);
 })();
 
+// https://www.acmicpc.net/problem/27866
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+  const str = input[0];
+  const index = Number(input[1]) - 1;
+  console.log(str[index]);
+})();
+
+// https://www.acmicpc.net/problem/11654
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim();
+  console.log(input.charCodeAt(0));
+})();
+
+// https://www.acmicpc.net/problem/11720
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+  const n = Number(input[0]);
+  const strs = input[1];
+
+  let answer = 0;
+  for (let i = 0; i < n; i++) {
+    answer += Number(strs[i]);
+  }
+  console.log(answer);
+})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+// https://www.acmicpc.net/problem/10809
+(() => {})();
+
+// https://www.acmicpc.net/problem/2588
+(() => {})();
+
+// https://www.acmicpc.net/problem/2525
+(() => {})();
+
+// https://www.acmicpc.net/problem/2438
+(() => {})();
+
+// https://www.acmicpc.net/problem/2439
+(() => {})();
+
 // https://www.acmicpc.net/problem/10811
 (() => {})();
 
 // https://www.acmicpc.net/problem/1546
 (() => {})();
 
-(() => {})();
-
+// https://www.acmicpc.net/problem/9086
 (() => {})();
