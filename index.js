@@ -115,7 +115,7 @@ const fs = require("fs");
   `);
 })();
 
-// https://www.acmicpc.net/source/79295980
+// https://www.acmicpc.net/problem/1330
 (() => {
   const input = fs.readFileSync("/dev/stdin").toString().split(" ");
   const [a, b] = input.map(Number);
