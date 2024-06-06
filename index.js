@@ -515,7 +515,65 @@ else if (process.platform === "win32") path = "./input.txt";
   console.log(answer);
 })();
 
-(() => {})();
+// https://www.acmicpc.net/problem/2675
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+  const t = Number(input[0]);
+
+  let answer = "";
+  for (let i = 1; i <= t; i++) {
+    const [r, s] = input[i].split(" ");
+    s.split("").forEach((v) => {
+      for (let j = 0; j < r; j++) {
+        answer += v;
+      }
+    });
+    answer += "\n";
+  }
+  console.log(answer);
+})();
+
+// https://www.acmicpc.net/problem/1152
+(() => {
+  const fs = require("fs");
+  const path = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+  const input = fs.readFileSync(path).toString().trim().split(" ");
+  const strs = input;
+
+  let answer = [];
+  for (let i = 0; i < strs.length; i++) {
+    if (strs[i] === "") continue;
+    answer.push(strs[i]);
+  }
+  console.log(answer.length);
+})();
+
+// https://www.acmicpc.net/problem/2908
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split(" ");
+  const [str1, str2] = input;
+
+  const s1 = str1[2] + str1[1] + str1[0];
+  const s2 = str2[2] + str2[1] + str2[0];
+  let answer;
+  if (Number(s1) > Number(s2)) answer = s1;
+  else answer = s2;
+  console.log(answer);
+})();
+
+// https://www.acmicpc.net/problem/11718
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+  const strs = input;
+  let answer = "";
+  for (const str of strs) {
+    answer += str + "\n";
+  }
+  console.log(answer);
+})();
 
 (() => {})();
 
@@ -553,12 +611,7 @@ else if (process.platform === "win32") path = "./input.txt";
 
 (() => {})();
 
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
+// https://www.acmicpc.net/problem/5622
 (() => {})();
 
 // https://www.acmicpc.net/problem/10809
