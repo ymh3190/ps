@@ -612,28 +612,132 @@ else if (process.platform === "win32") path = "./input.txt";
 (() => {})();
 
 // https://www.acmicpc.net/problem/5622
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString();
+  const strs = input;
+  const arrs = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"];
+
+  let answer = 0;
+  for (let i = 0; i < strs.length; i++) {
+    for (let j = 0; j < arrs.length; j++) {
+      if (arrs[j].includes(strs[i])) {
+        answer += j + 3;
+        break;
+      }
+    }
+  }
+  console.log(answer);
+})();
 
 // https://www.acmicpc.net/problem/10809
 (() => {})();
 
 // https://www.acmicpc.net/problem/2588
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+  const up = input[0];
+  const down = input[1];
+
+  const one = Number(up) * Number(down[2]);
+  const ten = Number(up) * Number(down[1]);
+  const hundred = Number(up) * Number(down[0]);
+  const sum = one + ten * 10 + hundred * 100;
+  console.log(one);
+  console.log(ten);
+  console.log(hundred);
+  console.log(sum);
+})();
 
 // https://www.acmicpc.net/problem/2525
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+  const [a, b] = input[0].split(" ").map(Number);
+  const c = Number(input[1]);
+
+  let hr = a;
+  let min = b + c;
+  if (min >= 60) {
+    hr += Math.floor(min / 60);
+    min = min % 60;
+    if (hr >= 24) {
+      hr -= 24;
+    }
+  }
+  console.log(hr, min);
+})();
 
 // https://www.acmicpc.net/problem/2438
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString();
+  const n = Number(input);
+
+  let str = "";
+  for (let i = 1; i < n + 1; i++) {
+    for (let j = 0; j < i; j++) {
+      str += "*";
+    }
+    str += "\n";
+  }
+  console.log(str);
+})();
 
 // https://www.acmicpc.net/problem/2439
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString();
+  const n = Number(input);
+
+  let str = "";
+  let star = "";
+  let blank = "";
+  for (let i = 0; i < n; i++) {
+    star += "*";
+    for (let j = 0; j < n - i - 1; j++) {
+      blank += " ";
+    }
+    str += blank + star + "\n";
+    blank = "";
+  }
+  console.log(str);
+})();
 
 // https://www.acmicpc.net/problem/10811
 (() => {})();
 
 // https://www.acmicpc.net/problem/1546
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+  const n = Number(input[0]);
+  const scores = input[1].split(" ").map(Number);
+
+  let max = 0;
+  for (let i = 0; i < n; i++) {
+    if (scores[i] > max) {
+      max = scores[i];
+    }
+  }
+
+  let avg = 0;
+  for (let i = 0; i < scores.length; i++) {
+    avg += ((scores[i] / max) * 100) / n;
+  }
+  console.log(avg);
+})();
 
 // https://www.acmicpc.net/problem/9086
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+  const n = Number(input[0]);
+
+  let str = "";
+  for (let i = 0; i < n; i++) {
+    str += input[i + 1][0] + input[i + 1].at(-1) + "\n";
+  }
+  console.log(str);
+})();
