@@ -575,7 +575,18 @@ else if (process.platform === "win32") path = "./input.txt";
   console.log(answer);
 })();
 
-(() => {})();
+// https://www.acmicpc.net/problem/3003
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split(" ");
+  const arrs = [1, 1, 2, 2, 2, 8];
+
+  const answer = [];
+  for (let i = 0; i < arrs.length; i++) {
+    answer.push(arrs[i] - input[i]);
+  }
+  console.log(answer.join(" "));
+})();
 
 (() => {})();
 
@@ -607,8 +618,7 @@ else if (process.platform === "win32") path = "./input.txt";
 
 (() => {})();
 
-(() => {})();
-
+// https://www.acmicpc.net/problem/25083
 (() => {})();
 
 // https://www.acmicpc.net/problem/5622
@@ -629,6 +639,9 @@ else if (process.platform === "win32") path = "./input.txt";
   }
   console.log(answer);
 })();
+
+// https://www.acmicpc.net/problem/2444
+(() => {})();
 
 // https://www.acmicpc.net/problem/10809
 (() => {})();
@@ -706,7 +719,24 @@ else if (process.platform === "win32") path = "./input.txt";
 })();
 
 // https://www.acmicpc.net/problem/10811
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+  const [n, m] = input[0].split(" ").map(Number);
+
+  const arrs = new Array(n).fill(1).map((v, i) => v + i);
+
+  for (let i = 0; i < m; i++) {
+    const tmps = [];
+    const [a, b] = input[i + 1].split(" ").map(Number);
+    for (let j = a - 1; j < b; j++) {
+      tmps.push(arrs[j]);
+    }
+    tmps.reverse();
+    arrs.splice(a - 1, tmps.length, ...tmps);
+  }
+  console.log(...arrs);
+})();
 
 // https://www.acmicpc.net/problem/1546
 (() => {
