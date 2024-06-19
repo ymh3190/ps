@@ -629,8 +629,11 @@ else if (process.platform === "win32") path = "./input.txt";
 
 (() => {})();
 
+// https://www.acmicpc.net/problem/2941
 (() => {})();
 
+// https://www.acmicpc.net/submit/1157/79831785
+// https://mywebproject.tistory.com/468 <- better than me
 (() => {})();
 
 // https://www.acmicpc.net/problem/2444
