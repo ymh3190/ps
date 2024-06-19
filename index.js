@@ -588,7 +588,22 @@ else if (process.platform === "win32") path = "./input.txt";
   console.log(answer.join(" "));
 })();
 
-(() => {})();
+// https://www.acmicpc.net/problem/10988
+// https://sunflo0524.tistory.com/37 <- better than me
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim().split("");
+  const strs = input;
+  const half = Math.floor(strs.length / 2);
+
+  for (let i = 0; i < half; i++) {
+    if (strs[i] !== strs[strs.length - 1 - i]) {
+      console.log(0);
+      return;
+    }
+  }
+  console.log(1);
+})();
 
 (() => {})();
 
@@ -616,6 +631,12 @@ else if (process.platform === "win32") path = "./input.txt";
 
 (() => {})();
 
+(() => {})();
+
+// https://www.acmicpc.net/problem/2444
+(() => {})();
+
+// https://www.acmicpc.net/problem/10809
 (() => {})();
 
 // https://www.acmicpc.net/problem/25083
@@ -639,12 +660,6 @@ else if (process.platform === "win32") path = "./input.txt";
   }
   console.log(answer);
 })();
-
-// https://www.acmicpc.net/problem/2444
-(() => {})();
-
-// https://www.acmicpc.net/problem/10809
-(() => {})();
 
 // https://www.acmicpc.net/problem/2588
 (() => {
