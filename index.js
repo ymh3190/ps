@@ -605,7 +605,27 @@ else if (process.platform === "win32") path = "./input.txt";
   console.log(1);
 })();
 
-(() => {})();
+// https://www.acmicpc.net/problem/1316
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+  const n = input.length;
+  const scores = ["A+", "A0", "B+", "B0", "C+", "C0", "D+", "D0", "F"];
+
+  let sum = 0;
+  let grades = 0;
+  for (let i = 0; i < n; i++) {
+    let [_, grade, score] = input[i].split(" ");
+    if (score === "P") {
+      continue;
+    }
+    grade = Number(grade);
+    grades += grade;
+    const index = scores.indexOf(score);
+    sum += index === 8 ? 0 : grade * (4.5 - index * 0.5);
+  }
+  console.log(sum / grades);
+})();
 
 (() => {})();
 
@@ -627,6 +647,7 @@ else if (process.platform === "win32") path = "./input.txt";
 
 (() => {})();
 
+// https://www.acmicpc.net/problem/1316
 (() => {})();
 
 // https://www.acmicpc.net/problem/2941
