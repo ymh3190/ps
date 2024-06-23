@@ -648,14 +648,66 @@ else if (process.platform === "win32") path = "./input.txt";
 (() => {})();
 
 // https://www.acmicpc.net/problem/1316
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+  const n = Number(input[0]);
+
+  let answer = 0;
+  for (let i = 0; i < n; i++) {
+    const str = input[i + 1];
+    const tmps = [];
+    let isGroup = true;
+
+    for (let j = 0; j < str.length; j++) {
+      if (tmps.indexOf(str[j]) === -1) {
+        tmps.push(str[j]);
+        continue;
+      }
+      if (tmps.indexOf(str[j]) !== tmps.length - 1) {
+        isGroup = false;
+        break;
+      }
+    }
+    if (isGroup) {
+      answer++;
+    }
+  }
+  console.log(answer);
+})();
 
 // https://www.acmicpc.net/problem/2941
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim();
+  let str = input;
+  const arrs = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="];
 
-// https://www.acmicpc.net/submit/1157/79831785
+  for (let i = 0; i < arrs.length; i++) {
+    str = str.split(arrs[i]).join(" ");
+  }
+  console.log(str.length);
+})();
+
+// https://www.acmicpc.net/problem/1157
 // https://mywebproject.tistory.com/468 <- better than me
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim().toUpperCase();
+  const str = input;
+  const arrs = new Array(26).fill(0);
+
+  for (let i = 0; i < str.length; i++) {
+    const code = str[i].charCodeAt();
+    arrs[code - 65]++;
+  }
+
+  const max = Math.max(...arrs);
+  const index = arrs.indexOf(max);
+  const maxCount = arrs.filter((v) => v === max).length;
+  const answer = maxCount === 1 ? String.fromCharCode(index + 65) : "?";
+  console.log(answer);
+})();
 
 // https://www.acmicpc.net/problem/2444
 (() => {})();
