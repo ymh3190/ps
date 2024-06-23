@@ -690,7 +690,6 @@ else if (process.platform === "win32") path = "./input.txt";
 })();
 
 // https://www.acmicpc.net/problem/1157
-// https://mywebproject.tistory.com/468 <- better than me
 (() => {
   const fs = require("fs");
   const input = fs.readFileSync("/dev/stdin").toString().trim().toUpperCase();
@@ -710,7 +709,20 @@ else if (process.platform === "win32") path = "./input.txt";
 })();
 
 // https://www.acmicpc.net/problem/2444
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const path = process.platform === "linux" ? "/dev/stdin" : "index.txt";
+  const input = fs.readFileSync(path).toString().trim();
+  const n = Number(input);
+
+  for (let i = 0; i < n; i++) {
+    console.log(" ".repeat(n - (i + 1)) + "*".repeat(2 * (i + 1) - 1));
+  }
+
+  for (let i = 0; i < n - 1; i++) {
+    console.log(" ".repeat(i + 1) + "*".repeat(2 * (n - 1 - i) - 1));
+  }
+})();
 
 // https://www.acmicpc.net/problem/10809
 (() => {})();
