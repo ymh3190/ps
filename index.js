@@ -589,7 +589,6 @@ else if (process.platform === "win32") path = "./input.txt";
 })();
 
 // https://www.acmicpc.net/problem/10988
-// https://sunflo0524.tistory.com/37 <- better than me
 (() => {
   const fs = require("fs");
   const input = fs.readFileSync("/dev/stdin").toString().trim().split("");
@@ -627,9 +626,50 @@ else if (process.platform === "win32") path = "./input.txt";
   console.log(sum / grades);
 })();
 
-(() => {})();
+// https://www.acmicpc.net/problem/2738
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+  const [n, m] = input[0].split(" ").map(Number);
 
-(() => {})();
+  for (let i = 0; i < n; i++) {
+    const row1 = input[i + 1].split(" ").map(Number);
+    const row2 = input[i + 1 + n].split(" ").map(Number);
+
+    const tmps = [];
+    for (let j = 0; j < m; j++) {
+      tmps.push(row1[j] + row2[j]);
+    }
+    console.log(...tmps);
+  }
+})();
+
+// https://www.acmicpc.net/problem/2566
+(() => {
+  const fs = require("fs");
+  const path = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+  const input = fs
+    .readFileSync(path)
+    .toString()
+    .trim()
+    .split("\n")
+    .map((v) => v.split(" ").map(Number));
+  const arrs = input;
+
+  let max = 0;
+  let row = 1;
+  let col = 1;
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      if (arrs[i][j] > max) {
+        max = arrs[i][j];
+        row = i + 1;
+        col = j + 1;
+      }
+    }
+  }
+  console.log(max, "\n", row, col);
+})();
 
 (() => {})();
 
@@ -725,10 +765,29 @@ else if (process.platform === "win32") path = "./input.txt";
 })();
 
 // https://www.acmicpc.net/problem/10809
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim();
+  const str = input;
+
+  const answer = [];
+  for (let i = 97; i < 123; i++) {
+    const s = String.fromCharCode(i);
+
+    answer.push(str.indexOf(s));
+  }
+  console.log(...answer);
+})();
 
 // https://www.acmicpc.net/problem/25083
-(() => {})();
+(() => {
+  console.log(`         ,r'"7
+  r\`-_   ,'  ,/
+   \\. ". L_r'
+     \`~\\/
+        |
+        |`);
+})();
 
 // https://www.acmicpc.net/problem/5622
 (() => {
