@@ -647,9 +647,8 @@ else if (process.platform === "win32") path = "./input.txt";
 // https://www.acmicpc.net/problem/2566
 (() => {
   const fs = require("fs");
-  const path = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
   const input = fs
-    .readFileSync(path)
+    .readFileSync("/dev/stdin")
     .toString()
     .trim()
     .split("\n")
@@ -671,6 +670,10 @@ else if (process.platform === "win32") path = "./input.txt";
   console.log(max, "\n", row, col);
 })();
 
+// https://www.acmicpc.net/problem/2745
+(() => {})();
+
+// https://www.acmicpc.net/problem/11005
 (() => {})();
 
 (() => {})();
@@ -717,15 +720,49 @@ else if (process.platform === "win32") path = "./input.txt";
 
 (() => {})();
 
-(() => {})();
-
-// 6.26
 // https://www.acmicpc.net/problem/10798
-(() => {})();
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+  const n = input.length;
+  const m = Math.max(...input.map((v) => v.length));
 
-// 6.26
+  let str = "";
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      str += input[j][i] || "";
+    }
+  }
+  console.log(str);
+})();
+
 // https://www.acmicpc.net/problem/2563
-(() => {})();
+(() => {
+  let fs = require("fs");
+  let [n, ...input] = fs
+    .readFileSync("/dev/stdin")
+    .toString()
+    .trim()
+    .split("\n");
+  n = Number(n);
+  input = input.map((v) => v.split(" ").map(Number));
+  let arrs = new Array(100).fill().map(() => new Array(100).fill(0));
+
+  let answer = 0;
+  for (let i = 0; i < n; i++) {
+    let [x, y] = input[i];
+
+    for (let j = 0; j < 10; j++) {
+      for (let k = 0; k < 10; k++) {
+        if (arrs[j + x][k + y] === 0) {
+          arrs[j + x][k + y] = 1;
+          answer++;
+        }
+      }
+    }
+  }
+  console.log(answer);
+})();
 
 // https://www.acmicpc.net/problem/1316
 (() => {
