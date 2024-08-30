@@ -1,5 +1,17 @@
 // source: https://www.acmicpc.net/step
 
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+});
+
+rl.on("line", (input) => {
+  console.log(input);
+  rl.close();
+}).on("close", () => {
+  process.exit();
+});
+
 let path;
 if (process.platform === "linux") path = "/dev/stdin";
 else if (process.platform === "win32") path = "./input.txt";
@@ -670,54 +682,113 @@ else if (process.platform === "win32") path = "./input.txt";
   console.log(max, "\n", row, col);
 })();
 
+// https://www.acmicpc.net/problem/2720
+(() => {
+  const fs = require("fs");
+  let [t, ...input] = fs.readFileSync(0, "utf-8").toString().trim().split("\n");
+  t = Number(t);
+  const answer = [];
+
+  for (let i = 0; i < t; i++) {
+    let tmp = "";
+    let change = Number(input[i]);
+    tmp += Math.floor(change / 25).toString() + " ";
+    change %= 25;
+
+    tmp += Math.floor(change / 10).toString() + " ";
+    change %= 10;
+
+    tmp += Math.floor(change / 5).toString() + " ";
+    change %= 5;
+
+    tmp += Math.floor(change / 1).toString();
+    answer.push(tmp);
+  }
+  console.log(...answer);
+})();
+
+// https://www.acmicpc.net/problem/2903
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync(0, "utf-8").toString().trim();
+  const n = parseInt(input);
+  const count = (2 ** n + 1) ** 2;
+  console.log(count);
+})();
+
+// https://www.acmicpc.net/problem/2292
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync(0, "utf-8").toString().trim();
+  const n = Number(input);
+  let max = 1,
+    count = 1;
+  while (max < n) {
+    max += 6 * count;
+    count++;
+  }
+  console.log(count);
+})();
+
+// https://www.acmicpc.net/problem/1193
+(() => {
+  const fs = require("fs");
+  const input = fs.readFileSync(0, "utf-8").toString().trim();
+  const x = Number(input);
+
+  let n = 1,
+    max = 1;
+  while (max < x) {
+    max += n + 1;
+    n++;
+  }
+
+  const a = n - (max - x);
+  if (n % 2 === 0) console.log(`${a}/${n - a + 1}`);
+  else console.log(`${n - a + 1}/${a}`);
+})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+(() => {})();
+
+// https://www.acmicpc.net/problem/1193
+(() => {})();
+
 // https://www.acmicpc.net/problem/2745
 (() => {})();
 
 // https://www.acmicpc.net/problem/11005
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
-(() => {})();
-
 (() => {})();
 
 // https://www.acmicpc.net/problem/10798
