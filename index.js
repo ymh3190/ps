@@ -126,19 +126,122 @@ const p11653 = () => {
   console.log(arrs.join("\n"));
 };
 
-const main = () => {
-  const p = Number(process.argv[2]);
-  if (!p) {
-    console.log("Input Invalid");
-    return;
+const p27323 = () => {
+  let fs = require("fs");
+  let input = fs.readFileSync("27323.txt").toString().split("\n").map(Number);
+  let a = input[0],
+    b = input[1];
+  console.log(a * b);
+};
+
+const p1085 = () => {
+  let fs = require("fs");
+  let input = fs
+    .readFileSync("1085.txt")
+    .toString()
+    .trim()
+    .split(" ")
+    .map(Number);
+  let [x, y, w, h] = input;
+  console.log(Math.min(x, y, w - x, h - y));
+};
+
+const p3009 = () => {
+  let fs = require("fs");
+  let input = fs
+    .readFileSync("3009.txt")
+    .toString()
+    .trim()
+    .split("\n")
+    .map((v) => v.split(" ").map(Number));
+
+  // let a, b, c, x, y;
+  // for (let i = 0; i < 2; i++) {
+  //   a = input[0][i];
+  //   b = input[1][i];
+  //   c = input[2][i];
+  //   if (a == b) !x ? (x = c) : (y = c);
+  //   else if (b == c) !x ? (x = a) : (y = a);
+  //   else if (c == a) !x ? (x = b) : (y = b);
+  // }
+  // console.log(x, y);
+  let xArrs = input.map((v) => v[0]).sort();
+  let yArrs = input.map((v) => v[1]).sort();
+  let x = xArrs[0] == xArrs[1] ? xArrs[2] : xArrs[0];
+  let y = yArrs[0] == yArrs[1] ? yArrs[2] : yArrs[0];
+  console.log(x, y);
+};
+
+const p15894 = () => {
+  let fs = require("fs");
+  let input = fs.readFileSync("15894.txt").toString().trim();
+  let n = Number(input);
+  console.log(4 * n);
+};
+
+const p9063 = () => {
+  let fs = require("fs");
+  let [_, ...input] = fs
+    .readFileSync("input.txt")
+    .toString()
+    .trim()
+    .split("\n");
+  input = input.map((v) => v.split(" ").map(Number));
+  let x = input.map((v) => v[0]).sort((a, b) => a - b);
+  let y = input.map((v) => v[1]).sort((a, b) => a - b);
+  let width = x.at(-1) - x[0];
+  let height = y.at(-1) - y[0];
+  console.log(width * height);
+};
+
+const p10101 = () => {
+  let fs = require("fs");
+  let inputs = fs
+    .readFileSync("input.txt")
+    .toString()
+    .trim()
+    .split("\n")
+    .map(Number);
+  let [a, b, c] = inputs;
+  if (a + b + c != 180) console.log("Error");
+  else if (a == b && b == c) console.log("Equilateral");
+  else if (a == b || b == c || c == a) console.log("Isosceles");
+  else console.log("Scalene");
+};
+
+const p5073 = () => {
+  let fs = require("fs");
+  let inputs = fs
+    .readFileSync("input.txt")
+    .toString()
+    .trim()
+    .split("\n")
+    .map((v) => v.split(" ").map(Number));
+  inputs.pop();
+  for (let input of inputs) {
+    let [a, b, c] = input.sort();
+    if (c >= a + b) console.log("Invalid");
+    else if (a == b && b == c) console.log("Equilateral");
+    else if (a == b || b == c || c == a) console.log("Isosceles");
+    else console.log("Scalene");
   }
-  if (p == 2869) p2869();
-  else if (p == 5086) p5086();
-  else if (p == 2501) p2501();
-  else if (p == 9506) p9506();
-  else if (p == 1978) p1978();
-  else if (p == 2581) p2581();
-  else if (p == 11653) p11653();
+};
+
+const p14215 = () => {
+  let fs = require("fs");
+  let input = fs
+    .readFileSync("input.txt")
+    .toString()
+    .trim()
+    .split(" ")
+    .map(Number);
+  let [a, b, c] = input.sort((a, b) => a - b);
+  if (c >= a + b) console.log(a + b - 1 + b + a);
+  else console.log(a + b + c);
+};
+
+const main = () => {
+  p14215();
 };
 
 main();
