@@ -1,3 +1,7 @@
+/**
+ * @param arrs input array
+ * @param n last index
+ */
 void insertSort(int arrs[], int n) {
   for (int i = 1; i < n; i++) {
     int key = arrs[i];

@@ -4,6 +4,10 @@ void swap(int* xp, int* yp) {
   *yp = tmp;
 }
 
+/**
+ * @param arrs input array
+ * @param n last index
+ */
 void bubbleSort(int arrs[], int n) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n - i - 1; j++) {

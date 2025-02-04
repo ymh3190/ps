@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-#include "mergeSort.c"
+#include "countingSort.c"
 
 int main() {
   FILE* fptr;
@@ -14,7 +15,7 @@ int main() {
     fscanf(fptr, "%d", &arrs[i]);
   }
 
-  mergeSort(arrs, 0, n - 1);
+  countSort(arrs, n);
   for (int i = 0; i < n; i++) {
     printf("%d\n", arrs[i]);
   }

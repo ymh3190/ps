@@ -4,6 +4,12 @@ void swap(int* xp, int* yp) {
   *yp = tmp;
 }
 
+/**
+ * @param arrs input array
+ * @param low
+ * @param high
+ * @return pivot index
+ */
 int partition(int arrs[], int low, int high) {
   int pivot = arrs[high];
   int i = low - 1;
@@ -17,6 +23,11 @@ int partition(int arrs[], int low, int high) {
   return i + 1;
 }
 
+/**
+ * @param arrs input array
+ * @param low
+ * @param high
+ */
 void quickSort(int arrs[], int low, int high) {
   if (low < high) {
     int pi = partition(arrs, low, high);
