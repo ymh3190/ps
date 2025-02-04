@@ -18,16 +18,16 @@ void countSort(int iArrs[], int N) {
     cArrs[i] += cArrs[i - 1];
   }
 
-  int* mArrs = (int*)malloc(N * sizeof(int));
+  int* oArrs = (int*)malloc(N * sizeof(int));
   for (int i = N - 1; i >= 0; i--) {
-    mArrs[cArrs[iArrs[i]] - 1] = iArrs[i];
+    oArrs[cArrs[iArrs[i]] - 1] = iArrs[i];
     cArrs[iArrs[i]]--;
   }
 
   for (int i = 0; i < N; i++) {
-    iArrs[i] = mArrs[i];
+    iArrs[i] = oArrs[i];
   }
 
   free(cArrs);
-  free(mArrs);
+  free(oArrs);
 }
