@@ -1,33 +1,30 @@
 /**
- * @param iArrs input array
- * @param N input array length
+ * @param arr input array
+ * @param n input array length
  */
-void countSort(int iArrs[], int N) {
-  int M = 0;
-  for (int i = 0; i < N; i++) {
-    if (iArrs[i] > M) M = iArrs[i];
+void countSort(int arr[], int n) {
+  int max = 0;
+  for (int i = 0; i < n; i++) {
+    if (arr[i] > max) max = arr[i];
   }
 
-  int* cArrs = (int*)calloc(M + 1, sizeof(int));
-
-  for (int i = 0; i < N; i++) {
-    cArrs[iArrs[i]]++;
+  int* cArrs = (int*)calloc(max + 1, sizeof(int));
+  for (int i = 0; i < n; i++) {
+    cArrs[arr[i]]++;
   }
-
-  for (int i = 1; i <= M; i++) {
+  for (int i = 1; i <= max; i++) {
     cArrs[i] += cArrs[i - 1];
   }
 
-  int* oArrs = (int*)malloc(N * sizeof(int));
-  for (int i = N - 1; i >= 0; i--) {
-    oArrs[cArrs[iArrs[i]] - 1] = iArrs[i];
-    cArrs[iArrs[i]]--;
+  int* mArrs = (int*)malloc(n * sizeof(int));
+  for (int i = n - 1; i >= 0; i--) {
+    mArrs[cArrs[arr[i]] - 1] = arr[i];
+    cArrs[arr[i]]--;
   }
-
-  for (int i = 0; i < N; i++) {
-    iArrs[i] = oArrs[i];
+  for (int i = 0; i < n; i++) {
+    arr[i] = mArrs[i];
   }
 
   free(cArrs);
-  free(oArrs);
+  free(mArrs);
 }
