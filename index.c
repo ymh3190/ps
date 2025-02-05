@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-#include "countingSort.c"
+#include "quickSort2.c"
 
 int main() {
   FILE* fptr;
@@ -10,14 +9,14 @@ int main() {
   int n;
   fscanf(fptr, "%d", &n);
 
-  int arrs[n];
+  int arrs[n][2];
   for (int i = 0; i < n; i++) {
-    fscanf(fptr, "%d", &arrs[i]);
+    fscanf(fptr, "%d %d", &arrs[i][0], &arrs[i][1]);
   }
 
-  countSort(arrs, n);
+  quickSort(arrs, 0, n - 1);
   for (int i = 0; i < n; i++) {
-    printf("%d\n", arrs[i]);
+    printf("%d %d\n", arrs[i][0], arrs[i][1]);
   }
 
   fclose(fptr);
