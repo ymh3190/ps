@@ -17,10 +17,15 @@ void countSort(int arr[], int n) {
   }
 
   int* mArrs = (int*)malloc(n * sizeof(int));
+  // geeksforgeeks guide
   for (int i = n - 1; i >= 0; i--) {
     mArrs[cArrs[arr[i]] - 1] = arr[i];
     cArrs[arr[i]]--;
   }
+  // for (int i = 0; i < n; i++) {
+  //   mArrs[cArrs[arr[i]] - 1] = arr[i];
+  //   cArrs[arr[i]]--;
+  // }
   for (int i = 0; i < n; i++) {
     arr[i] = mArrs[i];
   }
