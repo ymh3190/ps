@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "quickSort2.c"
 
@@ -9,14 +10,14 @@ int main() {
   int n;
   fscanf(fptr, "%d", &n);
 
-  int arrs[n][2];
+  struct pos arrs[n];
   for (int i = 0; i < n; i++) {
-    fscanf(fptr, "%d %d", &arrs[i][0], &arrs[i][1]);
+    fscanf(fptr, "%d %d", &arrs[i].x, &arrs[i].y);
   }
 
-  quickSort(arrs, 0, n - 1);
+  qsort(arrs, n, sizeof(struct pos), compare);
   for (int i = 0; i < n; i++) {
-    printf("%d %d\n", arrs[i][0], arrs[i][1]);
+    printf("%d %d\n", arrs[i].x, arrs[i].y);
   }
 
   fclose(fptr);

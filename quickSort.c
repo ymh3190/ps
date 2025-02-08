@@ -13,7 +13,7 @@ void swap(int* xp, int* yp) {
 int partition(int arrs[], int low, int high) {
   int pivot = arrs[high];
   int i = low - 1;
-  for (int j = low; j <= high - 1; j++) {
+  for (int j = low; j < high; j++) {
     if (arrs[j] < pivot) {
       i++;
       swap(&arrs[i], &arrs[j]);
