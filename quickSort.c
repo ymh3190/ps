@@ -1,7 +1,7 @@
-void swap(int* xp, int* yp) {
-  int tmp = *xp;
-  *xp = *yp;
-  *yp = tmp;
+void swap(int* a, int* b) {
+  int t = *a;
+  *a = *b;
+  *b = t;
 }
 
 /**
