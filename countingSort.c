@@ -12,7 +12,7 @@ void countSort(int arr[], int n) {
   for (int i = 0; i < n; i++) {
     cArrs[arr[i]]++;
   }
-  for (int i = 1; i <= max; i++) {
+  for (int i = 1; i < max + 1; i++) {
     cArrs[i] += cArrs[i - 1];
   }
 
