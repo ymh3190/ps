@@ -1,5 +1,36 @@
 #include <stdio.h>
 
+/**
+ * A recursive binary search function. It returns
+ * Location of x in given array arrs[low..high] is present,
+ * otherwise -1
+ * @param arrs input array
+ * @param low low index
+ * @param high high index
+ * @param x target value
+ */
+int binarySearch(int arrs[], int low, int high, int x) {
+  if (high >= low) {
+    int mid = low + (high - low) / 2;
+
+    // If the element is present at the middle
+    // itself
+    if (arrs[mid] == x) return mid;
+
+    // If element is smaller than mid, then
+    // it can only be present in left subarray
+    if (arrs[mid] > x) return binarySearch(arrs, low, mid - 1, x);
+
+    // else element can only be present
+    // in right subarray
+    return binarySearch(arrs, mid + 1, high, x);
+  }
+
+  // We reach here when element is not
+  // present in array
+  return -1;
+}
+
 void merge(int arrs[], int l, int m, int r) {
   int n1 = m - l + 1;
   int n2 = r - m;
@@ -48,37 +79,6 @@ void mergeSort(int arrs[], int l, int r) {
 
     merge(arrs, l, m, r);
   }
-}
-
-/**
- * A recursive binary search function. It returns
- * Location of x in given array arrs[low..high] is present,
- * otherwise -1
- * @param arrs input array
- * @param low low index
- * @param high high index
- * @param x target value
- */
-int binarySearch(int arrs[], int low, int high, int x) {
-  if (high >= low) {
-    int mid = low + (high - low) / 2;
-
-    // If the element is present at the middle
-    // itself
-    if (arrs[mid] == x) return mid;
-
-    // If element is smaller than mid, then
-    // it can only be present in left subarray
-    if (arrs[mid] > x) return binarySearch(arrs, low, mid - 1, x);
-
-    // else element can only be present
-    // in right subarray
-    return binarySearch(arrs, mid + 1, high, x);
-  }
-
-  // We reach here when element is not
-  // present in array
-  return -1;
 }
 
 // int main() {
