@@ -5,8 +5,8 @@ int isPrime(unsigned int num) {
   if (num == 2 || num == 3) return 1;
   if (num % 2 == 0 || num % 3 == 0) return 0;
 
-  // 5의 배수, 11의 배수, 13의 배수 체크
-  for (unsigned int i = 5; i * i <= num; i += 6) {
+  // 5의 배수, 7의 배수, 11의 배수, 13의 배수 체크
+  for (unsigned int i = 5; i * i < num + 1; i += 6) {
     if (num % i == 0 || num % (i + 2) == 0) return 0;
   }
   return 1;
