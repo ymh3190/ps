@@ -27,7 +27,6 @@ int main() {
       num++;
     }
   }
-
   printf(!len ? "Nice" : "Sad");
 
   fclose(fd);
