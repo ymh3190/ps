@@ -10,15 +10,15 @@ typedef struct queue {
 
 void initQueue(queue* q, int n) {
   q->front = 0;
-  q->rear = -1;
+  q->rear = 0;
   q->size = n;
   q->arrs = (int*)malloc(q->size * sizeof(int));
 }
 
-int isEmpty(queue* q) { return q->front == q->rear + 1; }
+int isEmpty(queue* q) { return q->front == q->rear; }
 int isFull(queue* q) { return q->rear == q->size - 1; }
 
-void enqueue(queue* q, int v) { q->arrs[++q->rear] = v; }
+void enqueue(queue* q, int v) { q->arrs[q->rear++] = v; }
 int dequeue(queue* q) { return q->arrs[q->front++]; }
 
 int main() {
@@ -27,11 +27,6 @@ int main() {
 
   int n, k;
   fscanf(fd, "%d %d", &n, &k);
-
-  if (n == 1) {
-    printf("<1>");
-    return 0;
-  }
 
   queue q;
   initQueue(&q, k * n);
@@ -51,15 +46,12 @@ int main() {
     }
   }
 
+  printf("<");
   for (int i = 0; i < n; i++) {
-    if (i == 0)
-      printf("<%d, ", rets[i]);
-    else if (i < n - 1) {
-      printf("%d, ", rets[i]);
-    } else {
-      printf("%d>", rets[i]);
-    }
+    printf("%d", rets[i]);
+    if (i != n - 1) printf(", ");
   }
+  printf(">\n");
 
   free(q.arrs);
   fclose(fd);
