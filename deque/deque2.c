@@ -22,6 +22,8 @@ int isFull(deque* d) {
 }
 
 void insertFront(deque* d, int v) {
+  if (isFull(d)) return;
+
   if (d->front == -1) {
     d->front = 0;
     d->rear = 0;
@@ -35,6 +37,8 @@ void insertFront(deque* d, int v) {
 }
 
 void insertRear(deque* d, int v) {
+  if (isFull(d)) return;
+
   if (d->rear == -1) {
     d->front = 0;
     d->rear = 0;
@@ -68,7 +72,7 @@ int deleteRear(deque* d) {
 
   int v = d->arrs[d->rear];
 
-  if (d->front == d->rear) {
+  if (d->rear == d->front) {
     d->front = -1;
     d->rear = -1;
   } else if (d->rear == 0) {
@@ -79,7 +83,7 @@ int deleteRear(deque* d) {
   return v;
 }
 
-int size(deque* d) {
+int getSize(deque* d) {
   if (isEmpty(d)) return 0;
   if (d->rear >= d->front) return d->rear - d->front + 1;
   return d->size - (d->front - d->rear - 1);
@@ -94,6 +98,7 @@ int main() {
 
   deque d;
   initDeque(&d, n);
+
   for (int i = 0; i < n; i++) {
     int cmd;
     fscanf(fd, "%d", &cmd);
@@ -101,29 +106,29 @@ int main() {
     if (cmd == 1) {
       int num;
       fscanf(fd, "%d", &num);
-      insertRear(&d, num);
+      insertFront(&d, num);
       continue;
     }
 
     if (cmd == 2) {
       int num;
       fscanf(fd, "%d", &num);
-      insertFront(&d, num);
+      insertRear(&d, num);
       continue;
     }
 
     if (cmd == 3) {
-      printf("%d\n", deleteRear(&d));
-      continue;
-    }
-
-    if (cmd == 4) {
       printf("%d\n", deleteFront(&d));
       continue;
     }
 
+    if (cmd == 4) {
+      printf("%d\n", deleteRear(&d));
+      continue;
+    }
+
     if (cmd == 5) {
-      printf("%d\n", size(&d));
+      printf("%d\n", getSize(&d));
       continue;
     }
 
@@ -133,20 +138,12 @@ int main() {
     }
 
     if (cmd == 7) {
-      if (isEmpty(&d)) {
-        printf("-1\n");
-      } else {
-        printf("%d\n", d.arrs[d.rear]);
-      }
+      printf("%d\n", isEmpty(&d) ? -1 : d.arrs[d.front]);
       continue;
     }
 
     if (cmd == 8) {
-      if (isEmpty(&d)) {
-        printf("-1\n");
-      } else {
-        printf("%d\n", d.arrs[d.front]);
-      }
+      printf("%d\n", isEmpty(&d) ? -1 : d.arrs[d.rear]);
       continue;
     }
   }
