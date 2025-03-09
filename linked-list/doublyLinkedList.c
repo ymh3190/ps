@@ -14,23 +14,23 @@ int main() {
   int n;
   fscanf(fd, "%d", &n);
 
-  node node[n];
+  node arrs[n];
   for (int i = 0; i < n; i++) {
-    node[i].i = i;
-    fscanf(fd, "%d", &node[i].v);
+    arrs[i].i = i;
+    fscanf(fd, "%d", &arrs[i].v);
     if (i == 0) {
-      node[i].prev = &node[n - 1];
-      node[i].next = &node[i + 1];
+      arrs[i].prev = &arrs[n - 1];
+      arrs[i].next = &arrs[i + 1];
     } else if (i < n - 1) {
-      node[i].prev = &node[i - 1];
-      node[i].next = &node[i + 1];
+      arrs[i].prev = &arrs[i - 1];
+      arrs[i].next = &arrs[i + 1];
     } else {
-      node[i].prev = &node[n - 2];
-      node[i].next = &node[0];
+      arrs[i].prev = &arrs[n - 2];
+      arrs[i].next = &arrs[0];
     }
   }
 
-  struct node* curNode = &node[0];
+  node* curNode = &arrs[0];
   while (1) {
     printf("%d ", curNode->i + 1);
     if (curNode->next == curNode) break;
