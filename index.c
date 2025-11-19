@@ -6,7 +6,8 @@ int main() {
 
   int a, b;
   fscanf(fd, "%d %d", &a, &b);
-  printf("%d", a + b);
+  printf("%d\n", a - b);
 
+  fclose(fd);
   return 0;
 }
