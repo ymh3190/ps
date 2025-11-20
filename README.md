@@ -2,5 +2,12 @@
 
 File\* fd;
 fd = fopen("input.txt", "r");
-fscanf(fd, "%d %d", &a, &b);
+int a;
+fscanf(fd, "%d", &a);
 fclose(fd);
+
+scanf
+short - %hd: half decimal
+
+printf
+%f, %lf, %.9lf
