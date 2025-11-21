@@ -11,3 +11,9 @@ short - %hd: half decimal
 
 printf
 %f, %lf, %.9lf
+
+char[]
+\0: 문자열의 끝을 나타냄
+
+삼중자
+??!: ?\?!
