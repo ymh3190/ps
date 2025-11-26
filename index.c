@@ -4,17 +4,14 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char h, m;
-  fscanf(fd, "%hhd %hhd", &h, &m);
+  char a, b;
+  short c;
+  fscanf(fd, "%hhd %hhd\n%hd", &a, &b, &c);
   fclose(fd);
 
-  if (m >= 45) {
-    printf("%hhd %hhd", h, m - 45);
-    return 0;
-  }
-
-  h = h < 1 ? 23 : h - 1;
-  m = m + 15 >= 60 ? m - 45 : m + 15;
-  printf("%hhd %hhd", h, m);
+  a = (b + c) / 60 > 0 ? a + (b + c) / 60 : a;
+  b = (b + c) % 60;
+  if (a >= 24) a -= 24;
+  printf("%hhd %hhd", a, b);
   return 0;
 }
