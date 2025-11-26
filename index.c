@@ -4,14 +4,39 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char a, b;
-  short c;
-  fscanf(fd, "%hhd %hhd\n%hd", &a, &b, &c);
+  char a, b, c;
+  fscanf(fd, "%hhd %hhd %hhd", &a, &b, &c);
   fclose(fd);
 
-  a = (b + c) / 60 > 0 ? a + (b + c) / 60 : a;
-  b = (b + c) % 60;
-  if (a >= 24) a -= 24;
-  printf("%hhd %hhd", a, b);
+  if (a == b && b == c) {
+    printf("%hu", 10000 + 1000 * a);
+    return 0;
+  }
+
+  if (a == b) {
+    printf("%hd", 1000 + 100 * a);
+    return 0;
+  }
+
+  if (b == c) {
+    printf("%hd", 1000 + 100 * b);
+    return 0;
+  }
+
+  if (c == a) {
+    printf("%hd", 1000 + 100 * c);
+    return 0;
+  }
+
+  if (a > b && a > c) {
+    printf("%hd", 100 * a);
+    return 0;
+  }
+  if (b > a && b > c) {
+    printf("%hd", 100 * b);
+    return 0;
+  }
+
+  printf("%hd", 100 * c);
   return 0;
 }
