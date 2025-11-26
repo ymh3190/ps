@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gcc -o index index.c
+gcc -o index index.c && ./index

@@ -1,37 +1,20 @@
-#include <stdbool.h>
 #include <stdio.h>
 
 int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  short x, y;
-  fscanf(fd, "%hd\n%hd", &x, &y);
+  char h, m;
+  fscanf(fd, "%hhd %hhd", &h, &m);
   fclose(fd);
 
-  bool isQ1 = x > 0 && y > 0;
-  if (isQ1) {
-    printf("1");
+  if (m >= 45) {
+    printf("%hhd %hhd", h, m - 45);
     return 0;
   }
 
-  bool isQ2 = x < 0 && y > 0;
-  if (isQ2) {
-    printf("2");
-    return 0;
-  }
-
-  bool isQ3 = x < 0 && y < 0;
-  if (isQ3) {
-    printf("3");
-    return 0;
-  }
-
-  bool isQ4 = x > 0 && y < 0;
-  if (isQ4) {
-    printf("4");
-    return 0;
-  }
-
-  return 1;
+  h = h < 1 ? 23 : h - 1;
+  m = m + 15 >= 60 ? m - 45 : m + 15;
+  printf("%hhd %hhd", h, m);
+  return 0;
 }
