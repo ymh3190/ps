@@ -4,39 +4,15 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char a, b, c;
-  fscanf(fd, "%hhd %hhd %hhd", &a, &b, &c);
+  char n;
+  fscanf(fd, "%hhd", &n);
   fclose(fd);
 
-  if (a == b && b == c) {
-    printf("%hu", 10000 + 1000 * a);
-    return 0;
+  char arrs[9][11];
+  for (char i = 0; i < 9; i++) {
+    sprintf(arrs[i], "%hhd * %hhd = %hhd", n, i + 1, n * (i + 1));
+    printf("%s\n", arrs[i]);
   }
 
-  if (a == b) {
-    printf("%hd", 1000 + 100 * a);
-    return 0;
-  }
-
-  if (b == c) {
-    printf("%hd", 1000 + 100 * b);
-    return 0;
-  }
-
-  if (c == a) {
-    printf("%hd", 1000 + 100 * c);
-    return 0;
-  }
-
-  if (a > b && a > c) {
-    printf("%hd", 100 * a);
-    return 0;
-  }
-  if (b > a && b > c) {
-    printf("%hd", 100 * b);
-    return 0;
-  }
-
-  printf("%hd", 100 * c);
   return 0;
 }
