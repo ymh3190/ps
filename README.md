@@ -20,3 +20,9 @@ char[]
 
 char
 scanf("%hhd", ...);
+
+윈도우의 기본 스택 크기는 1MB
+char buf[1000000][6] => 6MB
+따라서 static 변수, 전역 변수, 힙 할당 중에서 선택해서 해결
+
+char (\*buf)[6] = (char (\*)[6])malloc(sizeof(char) \* 1000000 \* 6);
