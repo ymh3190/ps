@@ -1,26 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct {
-  int a;
-  int b;
-  int c;
-} Buf;
+// #include <string.h>
 
 int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int t;
-  fscanf(fd, "%d", &t);
-  // Buf buf[t];
-  Buf* buf = malloc(sizeof(Buf) * t);
-  for (int i = 0; i < t; i++) {
-    fscanf(fd, "%d %d", &(buf[i].a), &(buf[i].b));
-    buf[i].c = buf[i].a + buf[i].b;
-  }
-  for (int i = 0; i < t; i++) {
-    printf("Case #%d: %d + %d = %d\n", i + 1, buf[i].a, buf[i].b, buf[i].c);
+  int n;
+  fscanf(fd, "%d", &n);
+
+  // char buf[n + 1];
+  // for (int i = 0; i < n; i++) {
+  //   for (int j = 0; j <= i; j++) {
+  //     buf[j] = '*';
+  //   }
+  //   for (int j = n - 1; j > i; j--) {
+  //     buf[j] = '\0';
+  //   }
+  //   printf("%s\n", buf);
+  // }
+
+  // char* buf = malloc(sizeof(char) * (n + 1));
+  // memset(buf, '\0', n + 1);
+  // for (int i = 0; i < n; i++) {
+  //   for (int j = 0; j <= i; j++) {
+  //     buf[j] = '*';
+  //   }
+  //   printf("%s\n", buf);
+  // }
+
+  char* buf = calloc('\0', sizeof(char) * (n + 1));
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j <= i; j++) {
+      buf[j] = '*';
+    }
+    printf("%s\n", buf);
   }
 
   free(buf);
