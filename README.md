@@ -29,3 +29,8 @@ char (\*buf)[6] = (char (\*)[6])malloc(sizeof(char) \* 1000000 \* 6);
 
 <string.h>
 memset
+
+char buf[101] = {' '};
+buf[0]만 공백으로 초기화되고 나머지는 0으로 초기화됨
+
+EOF: end of file, -1
