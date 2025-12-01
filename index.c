@@ -4,18 +4,27 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int n;
-  fscanf(fd, "%d", &n);
-
-  char buf[n + 1];
+  char buf[100];
   fscanf(fd, "%s", buf);
 
-  int sum = 0;
-  for (int i = 0; i < n; i++) {
-    sum += buf[i] - 48;  // '0'
+  int arrs[26];
+  for (int i = 0; i < 26; i++) {
+    arrs[i] = -1;
   }
 
-  printf("%d", sum);
+  for (int i = 0; i < 100; i++) {
+    if (buf[i] == '\0') break;
+    for (int j = 0; j < 26; j++) {
+      if (arrs[j] == -1 && j + 97 == buf[i]) {
+        arrs[j] = i;
+        break;
+      }
+    }
+  }
+
+  for (int i = 0; i < 26; i++) {
+    printf("%d ", arrs[i]);
+  }
   fclose(fd);
   return 0;
 }
