@@ -4,24 +4,15 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int n;
-  fscanf(fd, "%d", &n);
+  char buf[101];
+  fscanf(fd, "%s", buf);
 
-  int buf[n];
-  for (int i = 0; i < n; i++) {
-    fscanf(fd, "%d", &buf[i]);
+  for (int i = 0; i < 101; i++) {
+    if (buf[i] == '\0') {
+      printf("%d", i);
+      break;
+    }
   }
-
-  int m = buf[0];
-  for (int i = 0; i < n; i++) {
-    if (buf[i] > m) m = buf[i];
-  }
-
-  float sum = 0;
-  for (int i = 0; i < n; i++) {
-    sum += (float)buf[i] / m;
-  }
-  printf("%f", sum * 100 / n);
 
   fclose(fd);
   return 0;
