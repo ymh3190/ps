@@ -4,15 +4,19 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char buf_a[4];
-  char buf_b[4];
+  char buf[16];
+  fscanf(fd, "%s", buf);
 
-  fscanf(fd, "%s %s", buf_a, buf_b);
-  int a = (buf_a[2] - 48) * 100 + (buf_a[1] - 48) * 10 + (buf_a[0] - 48);
-  int b = (buf_b[2] - 48) * 100 + (buf_b[1] - 48) * 10 + (buf_b[0] - 48);
+  int dials[26] = {3, 3, 3, 4, 4, 4, 5, 5, 5, 6,  6,  6,  7,
+                   7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10};
 
-  printf("%d", a > b ? a : b);
+  int s = 0;
+  for (int i = 0; i < 16; i++) {
+    if (buf[i] == '\0') break;
+    s += dials[buf[i] - 65];
+  }
 
+  printf("%d", s);
   fclose(fd);
   return 0;
 }
