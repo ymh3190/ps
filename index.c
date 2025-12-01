@@ -4,13 +4,17 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char buf[101];
-  fscanf(fd, "%s", buf);
+  int t;
+  fscanf(fd, "%d", &t);
 
-  for (int i = 0; i < 101; i++) {
-    if (buf[i] == '\0') {
-      printf("%d", i);
-      break;
+  char buf[1000];
+  for (int i = 0; i < t; i++) {
+    fscanf(fd, "%s", buf);
+    for (int j = 0; j < 1000; j++) {
+      if (buf[j] == '\0') {
+        printf("%c%c\n", buf[0], buf[j - 1]);
+        break;
+      }
     }
   }
 
