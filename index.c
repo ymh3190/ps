@@ -4,25 +4,22 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int buf[30];
-  for (int i = 0; i < 30; i++) {
-    buf[i] = i + 1;
+  int buf[42];
+  for (int i = 0; i < 42; i++) {
+    buf[i] = 0;
   }
 
-  for (int i = 0; i < 28; i++) {
+  for (int i = 0; i < 10; i++) {
     int t;
     fscanf(fd, "%d", &t);
-    for (int j = 0; j < 30; j++) {
-      if (buf[j] == t) {
-        buf[j] = 0;
-        break;
-      }
-    }
+    buf[t % 42] = 1;
   }
 
-  for (int i = 0; i < 30; i++) {
-    if (buf[i]) printf("%d ", buf[i]);
+  int c = 0;
+  for (int i = 0; i < 42; i++) {
+    if (buf[i]) c++;
   }
+  printf("%d", c);
 
   fclose(fd);
   return 0;
