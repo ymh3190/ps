@@ -4,23 +4,28 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int buf[9];
-  int i = 0;
-  while (1) {
-    if (fscanf(fd, "%d", &buf[i]) == EOF) break;
-    i++;
+  int n;
+  int m;
+  fscanf(fd, "%d %d", &n, &m);
+
+  int buf[n];
+  for (int i = 0; i < n; i++) {
+    buf[i] = 0;
   }
 
-  int max = buf[0];
-  int idx = 0;
-  for (int i = 0; i < 9; i++) {
-    if (buf[i] > max) {
-      max = buf[i];
-      idx = i + 1;
+  for (int i = 0; i < m; i++) {
+    int a, b, c;
+    fscanf(fd, "%d %d %d", &a, &b, &c);
+    a -= 1;
+    b -= 1;
+    for (a; a <= b; a++) {
+      buf[a] = c;
     }
   }
 
-  printf("%d\n%d", max, idx);
+  for (int i = 0; i < n; i++) {
+    printf("%d ", buf[i]);
+  }
   fclose(fd);
   return 0;
 }
