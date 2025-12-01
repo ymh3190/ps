@@ -4,27 +4,22 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char buf[100];
-  fscanf(fd, "%s", buf);
+  int t;
+  fscanf(fd, "%d", &t);
 
-  int arrs[26];
-  for (int i = 0; i < 26; i++) {
-    arrs[i] = -1;
-  }
-
-  for (int i = 0; i < 100; i++) {
-    if (buf[i] == '\0') break;
-    for (int j = 0; j < 26; j++) {
-      if (arrs[j] == -1 && j + 97 == buf[i]) {
-        arrs[j] = i;
-        break;
+  char buf[20];
+  int r;
+  for (int i = 0; i < t; i++) {
+    fscanf(fd, "%d %s", &r, buf);
+    for (int j = 0; j < 20; j++) {
+      if (buf[j] == '\0') break;
+      for (int k = 0; k < r; k++) {
+        printf("%c", buf[j]);
       }
     }
+    printf("\n");
   }
 
-  for (int i = 0; i < 26; i++) {
-    printf("%d ", arrs[i]);
-  }
   fclose(fd);
   return 0;
 }
