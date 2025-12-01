@@ -10,17 +10,17 @@ int main() {
 
   int buf[n];
   for (int i = 0; i < n; i++) {
-    buf[i] = 0;
+    buf[i] = i + 1;
   }
 
   for (int i = 0; i < m; i++) {
-    int a, b, c;
-    fscanf(fd, "%d %d %d", &a, &b, &c);
+    int a, b;
+    fscanf(fd, "%d %d", &a, &b);
     a -= 1;
     b -= 1;
-    for (a; a <= b; a++) {
-      buf[a] = c;
-    }
+    int t = buf[a];
+    buf[a] = buf[b];
+    buf[b] = t;
   }
 
   for (int i = 0; i < n; i++) {
