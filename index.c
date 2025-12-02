@@ -13,8 +13,8 @@ int main() {
   }
   buf[size] = '\0';
 
-  int mid = (size - 1) / 2;
-  for (int i = 0; i <= mid; i++) {
+  int mid = size / 2;
+  for (int i = 0; i < mid; i++) {
     if (buf[i] != buf[size - 1 - i]) {
       printf("0");
       return 0;
