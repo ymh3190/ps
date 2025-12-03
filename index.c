@@ -4,78 +4,46 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int size = 1000001;
-  char buf[size];
+  char buf[101];
   fscanf(fd, "%s", buf);
 
-  int arr[26] = {0};
-  for (int i = 0; i < size; i++) {
+  int c = 0;
+  for (int i = 0; i < 101; i++) {
     if (buf[i] == '\0') break;
-    if (buf[i] >= 'a' && buf[i] <= 'z') {
-      arr[buf[i] - 97]++;
+    if (buf[i] == 'c' && (buf[i + 1] == '=' || buf[i + 1] == '-')) {
+      c++;
+      i += 1;
       continue;
     }
-    if (buf[i] >= 'A' && buf[i] <= 'Z') {
-      arr[buf[i] - 65]++;
+    if (buf[i] == 'd' && (buf[i + 1] == '-')) {
+      c++;
+      i += 1;
       continue;
     }
-  }
-
-  int m = arr[0];
-  int idx = 0;
-  for (int i = 1; i < 26; i++) {
-    if (arr[i] > m) {
-      m = arr[i];
-      idx = i;
+    if (buf[i] == 'd' && buf[i + 1] == 'z' && buf[i + 2] == '=') {
+      c++;
+      i += 2;
+      continue;
     }
+    if (buf[i] == 'l' && buf[i + 1] == 'j') {
+      c++;
+      i += 1;
+      continue;
+    }
+    if (buf[i] == 'n' && buf[i + 1] == 'j') {
+      c++;
+      i += 1;
+      continue;
+    }
+    if ((buf[i] == 's' || buf[i] == 'z') && buf[i + 1] == '=') {
+      c++;
+      i += 1;
+      continue;
+    }
+    c++;
   }
 
-  int flag = 0;
-  for (int i = 0; i < 26; i++) {
-    if (arr[i] == m) flag++;
-  }
-
-  printf("%c", flag > 1 ? '?' : idx + 65);
-
-  // 틀린 코드
-  // int arr[26];
-  // for (int i = 0; i < 26; i++) {
-  //   arr[i] = 0;
-  // }
-
-  // for (int i = 0; i < size; i++) {
-  //   if (buf[i] == '\0') break;
-  //   if (buf[i] >= 'a' && buf[i] <= 'z') {
-  //     buf[i] -= 97;
-  //     continue;
-  //   }
-  //   if (buf[i] >= 'A' && buf[i] <= 'Z') {
-  //     buf[i] -= 65;
-  //     continue;
-  //   }
-  // }
-
-  // for (int i = 0; i < size; i++) {
-  //   if (buf[i] == '\0') break;
-  //   arr[(int)buf[i]]++;  // 여기서 잘못됨
-  // }
-
-  // int m = arr[0];
-  // int idx = 0;
-  // for (int i = 1; i < 26; i++) {
-  //   if (arr[i] > m) {
-  //     m = arr[i];
-  //     idx = i;
-  //   }
-  // }
-
-  // int flag = 0;
-  // for (int i = 0; i < 26; i++) {
-  //   if (arr[i] == m) flag++;
-  // }
-
-  // printf("%c", flag > 1 ? '?' : idx + 65);
-
+  printf("%d", c);
   fclose(fd);
   return 0;
 }
