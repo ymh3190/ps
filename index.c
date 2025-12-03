@@ -4,43 +4,34 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char buf[101];
-  fscanf(fd, "%s", buf);
+  int n;
+  fscanf(fd, "%d", &n);
 
-  int c = 0;
-  for (int i = 0; i < 101; i++) {
-    if (buf[i] == '\0') break;
-    if (buf[i] == 'c' && (buf[i + 1] == '=' || buf[i + 1] == '-')) {
-      c++;
-      i += 1;
-      continue;
+  char buf[101];
+  int c = n;
+  for (int i = 0; i < n; i++) {
+    fscanf(fd, "%s", buf);
+    char t[26] = {0};
+    int idx = 0;
+    int flag = 0;
+    for (int j = 0; j < 100; j++) {
+      if (buf[j] == '\0') break;
+      for (int k = 0; k < idx; k++) {
+        if (t[k] == buf[j]) {
+          c--;
+          break;
+        }
+      }
+      if (flag) {
+        c--;
+        break;
+      }
+      if (buf[j] == buf[j + 1]) {
+        continue;
+      }
+      t[idx] = buf[j];
+      idx++;
     }
-    if (buf[i] == 'd' && (buf[i + 1] == '-')) {
-      c++;
-      i += 1;
-      continue;
-    }
-    if (buf[i] == 'd' && buf[i + 1] == 'z' && buf[i + 2] == '=') {
-      c++;
-      i += 2;
-      continue;
-    }
-    if (buf[i] == 'l' && buf[i + 1] == 'j') {
-      c++;
-      i += 1;
-      continue;
-    }
-    if (buf[i] == 'n' && buf[i + 1] == 'j') {
-      c++;
-      i += 1;
-      continue;
-    }
-    if ((buf[i] == 's' || buf[i] == 'z') && buf[i + 1] == '=') {
-      c++;
-      i += 1;
-      continue;
-    }
-    c++;
   }
 
   printf("%d", c);
