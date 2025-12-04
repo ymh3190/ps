@@ -4,51 +4,29 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char t[51];
-  float g;
-  char s[3];
-  float sum = 0;
-  float b = 0;
+  int n, m;
+  fscanf(fd, "%d %d", &n, &m);
 
-  for (int i = 0; i < 20; i++) {
-    fscanf(fd, "%s %f %s", t, &g, s);
-    if (s[0] == 'P') continue;
-    b += g;
-    if (s[0] == 'A' && s[1] == '+') {
-      sum += g * 4.5;
-      continue;
+  int a[n][m];
+  int b[n][m];
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      fscanf(fd, "%d", &a[i][j]);
     }
-    if (s[0] == 'A' && s[1] == '0') {
-      sum += g * 4.0;
-      continue;
-    }
-    if (s[0] == 'B' && s[1] == '+') {
-      sum += g * 3.5;
-      continue;
-    }
-    if (s[0] == 'B' && s[1] == '0') {
-      sum += g * 3.0;
-      continue;
-    }
-    if (s[0] == 'C' && s[1] == '+') {
-      sum += g * 2.5;
-      continue;
-    }
-    if (s[0] == 'C' && s[1] == '0') {
-      sum += g * 2.0;
-      continue;
-    }
-    if (s[0] == 'D' && s[1] == '+') {
-      sum += g * 1.5;
-      continue;
-    }
-    if (s[0] == 'D' && s[1] == '0') {
-      sum += g * 1.0;
-      continue;
+  }
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      fscanf(fd, "%d", &b[i][j]);
     }
   }
 
-  printf("%f", sum / b);
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      printf("%d ", a[i][j] + b[i][j]);
+    }
+    printf("\n");
+  }
+
   fclose(fd);
   return 0;
 }
