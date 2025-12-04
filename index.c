@@ -16,6 +16,8 @@ int main() {
     int flag = 0;
     for (int j = 0; j < 100; j++) {
       if (buf[j] == '\0') break;
+      if (buf[j] == buf[j + 1]) continue;
+
       for (int k = 0; k < idx; k++) {
         if (t[k] == buf[j]) {
           c--;
@@ -25,9 +27,6 @@ int main() {
       if (flag) {
         c--;
         break;
-      }
-      if (buf[j] == buf[j + 1]) {
-        continue;
       }
       t[idx] = buf[j];
       idx++;
