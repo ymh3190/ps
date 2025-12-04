@@ -4,36 +4,51 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int n;
-  fscanf(fd, "%d", &n);
+  char t[51];
+  float g;
+  char s[3];
+  float sum = 0;
+  float b = 0;
 
-  char buf[101];
-  int c = n;
-  for (int i = 0; i < n; i++) {
-    fscanf(fd, "%s", buf);
-    char t[26] = {0};
-    int idx = 0;
-    int flag = 0;
-    for (int j = 0; j < 100; j++) {
-      if (buf[j] == '\0') break;
-      if (buf[j] == buf[j + 1]) continue;
-
-      for (int k = 0; k < idx; k++) {
-        if (t[k] == buf[j]) {
-          c--;
-          break;
-        }
-      }
-      if (flag) {
-        c--;
-        break;
-      }
-      t[idx] = buf[j];
-      idx++;
+  for (int i = 0; i < 20; i++) {
+    fscanf(fd, "%s %f %s", t, &g, s);
+    if (s[0] == 'P') continue;
+    b += g;
+    if (s[0] == 'A' && s[1] == '+') {
+      sum += g * 4.5;
+      continue;
+    }
+    if (s[0] == 'A' && s[1] == '0') {
+      sum += g * 4.0;
+      continue;
+    }
+    if (s[0] == 'B' && s[1] == '+') {
+      sum += g * 3.5;
+      continue;
+    }
+    if (s[0] == 'B' && s[1] == '0') {
+      sum += g * 3.0;
+      continue;
+    }
+    if (s[0] == 'C' && s[1] == '+') {
+      sum += g * 2.5;
+      continue;
+    }
+    if (s[0] == 'C' && s[1] == '0') {
+      sum += g * 2.0;
+      continue;
+    }
+    if (s[0] == 'D' && s[1] == '+') {
+      sum += g * 1.5;
+      continue;
+    }
+    if (s[0] == 'D' && s[1] == '0') {
+      sum += g * 1.0;
+      continue;
     }
   }
 
-  printf("%d", c);
+  printf("%f", sum / b);
   fclose(fd);
   return 0;
 }
