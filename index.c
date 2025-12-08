@@ -1,33 +1,37 @@
-#include <math.h>
 #include <stdio.h>
 
 int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  char buf[31];
-  int b;
-  fscanf(fd, "%s %d", buf, &b);
+  int n, b;
+  fscanf(fd, "%d %d", &n, &b);
 
-  int size = 0;
-  for (int i = 0; i < 31; i++) {
-    if (buf[i] == '\0') break;
-    size++;
+  int buf[30] = {0};
+  int idx = 0;
+  while (1) {
+    if (n <= 0) {
+      idx--;
+      break;
+    }
+    int t = n % b;
+    if (t >= 10) {
+      buf[idx] = t + 55;
+    } else {
+      buf[idx] = t;
+    }
+    idx++;
+    n /= b;
   }
 
-  int s = 0;
-  int e = size - 1;
-  for (int i = 0; i < size; i++) {
-    if (buf[i] >= 'A' && buf[i] <= 'Z') {
-      s += (buf[i] - 55) * (int)pow(b, e);
-      e--;
+  for (int i = idx; i >= 0; i--) {
+    if (buf[i] >= 10) {
+      printf("%c", buf[i]);
       continue;
     }
-    s += (buf[i] - 48) * (int)pow(b, e);
-    e--;
+    printf("%d", buf[i]);
   }
 
-  printf("%d", s);
   fclose(fd);
   return 0;
 }
