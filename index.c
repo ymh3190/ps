@@ -4,32 +4,17 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int n, b;
-  fscanf(fd, "%d %d", &n, &b);
+  int t;
+  fscanf(fd, "%d", &t);
 
-  int buf[30] = {0};
-  int idx = 0;
-  while (1) {
-    if (n <= 0) {
-      idx--;
-      break;
-    }
-    int t = n % b;
-    if (t >= 10) {
-      buf[idx] = t + 55;
-    } else {
-      buf[idx] = t;
-    }
-    idx++;
-    n /= b;
-  }
-
-  for (int i = idx; i >= 0; i--) {
-    if (buf[i] >= 10) {
-      printf("%c", buf[i]);
-      continue;
-    }
-    printf("%d", buf[i]);
+  int c;
+  for (int i = 0; i < t; i++) {
+    fscanf(fd, "%d", &c);
+    int q = c / 25;
+    int d = (c % 25) / 10;
+    int n = ((c % 25) % 10) / 5;
+    int p = ((c % 25) % 10) % 5;
+    printf("%d %d %d %d\n", q, d, n, p);
   }
 
   fclose(fd);
