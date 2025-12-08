@@ -1,21 +1,14 @@
+#include <math.h>
 #include <stdio.h>
 
 int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int t;
-  fscanf(fd, "%d", &t);
+  int n;
+  fscanf(fd, "%d", &n);
 
-  int c;
-  for (int i = 0; i < t; i++) {
-    fscanf(fd, "%d", &c);
-    int q = c / 25;
-    int d = (c % 25) / 10;
-    int n = ((c % 25) % 10) / 5;
-    int p = ((c % 25) % 10) % 5;
-    printf("%d %d %d %d\n", q, d, n, p);
-  }
+  printf("%d", (int)pow((pow(2, n) + 1), 2));
 
   fclose(fd);
   return 0;
