@@ -4,43 +4,43 @@ int main() {
   FILE* fd;
   fd = fopen("input.txt", "r");
 
-  int x;
-  fscanf(fd, "%d", &x);
+  int m, n;
+  fscanf(fd, "%d\n%d", &m, &n);
 
-  if (x == 1) {
-    printf("1/1");
-    return 0;
+  int size = n - m + 1;
+  int buf[size];
+  for (int i = 0; i < size; i++) {
+    buf[i] = 0;
   }
 
-  int idx = 2;
-  while (1) {
-    if (idx * (idx + 1) / 2 >= x && (idx - 1) * idx / 2 < x) {
-      break;
+  int idx = 0;
+  for (int i = m; i <= n; i++) {
+    if (i == 2 || i == 3 || i == 5 || i == 7) {
+      buf[idx++] = i;
+      continue;
     }
-    idx++;
+    if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+      continue;
+    }
+    for (int j = 11; j <= n; j += 6) {
+      if (i != j && i % j == 0) break;
+      if (i != (j + 2) && i % (j + 2) == 0) break;
+      if (i % j == 0 || i % (j + 2) == 0) {
+        buf[idx++] = i;
+        break;
+      }
+    }
   }
 
-  int lx = idx * (idx + 1) / 2;
-  int a, b;
-  if (idx % 2 == 0) {
-    a = idx;
-    b = 1;
+  if (idx == 0) {
+    printf("-1");
   } else {
-    a = 1;
-    b = idx;
-  }
-
-  for (int i = lx - 1; i >= x; i--) {
-    if (idx % 2 == 0) {
-      a--;
-      b++;
-    } else {
-      a++;
-      b--;
+    int sum = 0;
+    for (int i = 0; i < idx; i++) {
+      sum += buf[i];
     }
+    printf("%d\n%d", sum, buf[0]);
   }
-
-  printf("%d/%d", a, b);
 
   fclose(fd);
   return 0;
