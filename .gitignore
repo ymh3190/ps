@@ -1,5 +1,6 @@
 .vscode/
+.DS_Store
 
 input.txt
-index.exe
-index
+main.exe
+main

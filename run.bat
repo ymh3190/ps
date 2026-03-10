@@ -2,4 +2,4 @@
 
 chcp 65001 >nul
 
-gcc -o index index.c && index
+gcc -o main main.c && main
